@@ -1,0 +1,21 @@
+.NavBar {
+    height: 100vh;
+    width: 130px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    background: rgb(206, 206, 206);
+    padding: 30px;
+}
+
+.logout{
+    background: grey;
+    height: 20px;
+    width: 75px;
+}
+
+.profilepic{
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+}

@@ -1,7 +1,12 @@
-div{
+.home{
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     padding-left: 50px;
+}
+.logout{
+    background: grey;
+    height: 20px;
+    width: 75px;
 }

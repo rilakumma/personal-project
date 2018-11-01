@@ -1,9 +1,12 @@
+.profileBox{
+    padding-left: 50px;
+}
+
 .noUser {
     margin: 0 auto;
     font-size: 15px;
     width: 500px;
     height: 50px;
-    /* background: lavender; */
 }
 .noUser p {
     margin: 0;

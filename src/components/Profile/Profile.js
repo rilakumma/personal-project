@@ -1,30 +1,20 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { userLogin } from './../../ducks/reducer';
 import axios from 'axios';
 import './Profile.css';
 
 class Profile extends Component {
-    componentDidMount(){
-        axios.get('/api/me').then(res=>{
-            this.props.userLogin(res.data);
-        }).catch(error=>{
-            console.log('error', error)
-        })
-    }
-
     render(){
-        console.log(this.props);
         const { user } = this.props;
         return(
-            <div>
+            <div className='profileBox'>
             <h1>Profile</h1>
         
-            {this.props.user?
+            {user?
             <div>
+            <img src={user.picture} width={200}/>
             <div>name: {user.name}</div>
             <div>email: {user.email}</div>
-            <img src={user.picture} width={200}/>
             </div>
             : <div className="noUser" >
             <p>No user found O.o </p>
@@ -37,9 +27,9 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state){
-    console.log(state)
+    // console.log(state)
     return{
             user: state.user 
     }
 }
-export default connect(mapStateToProps, {userLogin})(Profile);
+export default connect(mapStateToProps)(Profile);

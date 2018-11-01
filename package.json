@@ -19,6 +19,8 @@
     "redux": "^4.0.1"
   },
   "scripts": {
+    "now-start": "node server/index.js",
+    "deploy": "now --public --dotenv=.env.prod -d",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

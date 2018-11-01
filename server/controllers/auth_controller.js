@@ -15,12 +15,16 @@ module.exports = {
             })
 
         function exchangeCodeForAccessToken(){
+            let protocal = `http`;
+            if(process.env.NODE_ENV=== 'production'){
+                protocal = `https`;
+            }
             const payload = {
                 client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
                 client_secret: process.env.AUTH0_CLIENT_SECRET,
                 code: req.query.code,
                 grant_type: 'authorization_code',
-                redirect_uri: `http://${req.headers.host}/auth/callback`
+                redirect_uri: `${protocal}://${req.headers.host}`
             }
             // console.log('payload', payload);
             return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload);

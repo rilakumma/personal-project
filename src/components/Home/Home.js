@@ -14,7 +14,10 @@ class Home extends Component {
     }
     componentDidMount(){
         axios.get('/api/me').then(res=>{
+            // console.log(JSON.stringify(res.data))
             this.props.userLogin(res.data);
+            // req.session.user = res.data;
+            // sessionStorage.setItem('user', JSON.stringify(res.data))
         }).catch(error=>{
             this.setState({error})
         }).then( ()=> {this.setState({ loading: false }) })
@@ -34,10 +37,10 @@ class Home extends Component {
         const url = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${redirectUri}&response_type=code`;
         console.log(this.props.user);
         return(
-            <div>
+            <div className='home'>
             <h1>home</h1>
             {user &&
-            <div><button onClick={this.logout}>logout</button></div>
+            <div><button className='logout' onClick={this.logout}>logout</button></div>
             }
             {loading? 
                 <div>Loading...</div> 
@@ -46,9 +49,6 @@ class Home extends Component {
                     : user
                         ?<div>
                             <div>Welcome, {user.name}</div>
-                            {/* <div>Name: {user.name}</div>
-                            <div>Email: {user.email}</div>
-                            <img src ={user.picture} alt='user' /> */}
                         </div>
                         : <div><a href={url}>login</a></div>
             }

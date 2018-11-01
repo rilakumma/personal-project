@@ -1,4 +1,5 @@
 .App {
-  text-align: center;
   font-family: 'Maitree', serif;
+  width:100%;
+  display: flex;
 }

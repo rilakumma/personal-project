@@ -3,6 +3,7 @@ module.exports = {
         res.status(200).json(req.session.user);
     },
     updateUsername: (req,res)=>{
+        const { username } = req.body;
         
     }
     

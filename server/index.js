@@ -21,6 +21,8 @@ massive(process.env.CONNECTION_STRING).then(database=>{
     console.log('Error with massive', error);
 })
 
+app.use( express.static( `${__dirname}/../build` ) );
+
 //user controller
 app.get('/api/me', userController.getUser);
 app.patch('/api/me', userController.updateUsername);
@@ -30,4 +32,9 @@ app.get('/auth/callback', authController.handleLogin);
 
 app.listen(4000, ()=>{
     console.log('Server is listening on port 4000!! ☁️ ☁️ ☁️ ☁️ ☁️');
-})
+});
+
+const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
