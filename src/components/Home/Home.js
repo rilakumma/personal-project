@@ -14,10 +14,7 @@ class Home extends Component {
     }
     componentDidMount(){
         axios.get('/api/me').then(res=>{
-            // console.log(JSON.stringify(res.data))
             this.props.userLogin(res.data);
-            // req.session.user = res.data;
-            // sessionStorage.setItem('user', JSON.stringify(res.data))
         }).catch(error=>{
             this.setState({error})
         }).then( ()=> {this.setState({ loading: false }) })

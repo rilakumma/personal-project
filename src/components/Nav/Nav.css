@@ -3,11 +3,14 @@
     width: 130px;
     display: flex;
     justify-content: flex-start;
+    align-items:center;
     flex-direction: column;
     background: rgb(206, 206, 206);
     padding: 30px;
 }
-
+.logo{
+    text-decoration: none;
+}
 .logout{
     background: grey;
     height: 20px;
@@ -18,4 +21,10 @@
     height: 100px;
     width: 100px;
     border-radius: 100px;
+}
+
+.userdisplay {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }

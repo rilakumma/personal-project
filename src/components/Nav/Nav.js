@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userLogin } from '../../ducks/reducer';
 import axios from 'axios';
@@ -30,11 +31,16 @@ class Nav extends Component {
     return(
         this.props.pathname !== '/' && (
         <div className='NavBar'>
-            <div>SiteName</div>
+            <Link to='/' className='logo'><div>☁️☁️☁️☁️☁️</div></Link>
             {this.props.user && 
-            <div>
+            <div className='userdisplay'>
             <img className='profilepic' src={this.props.user.picture} />
-            <div>{this.props.user.name}</div>
+            {/* {this.props.user.username &&
+            <div>{this.props.user.username}</div>
+            } */}
+            <div>Hi, {this.props.user.name}!</div>
+            <Link to='/dashboard'><button className='logout'>dashboard</button></Link>
+            <Link to='/profile'><button className='logout'>profile</button></Link>
             <button className='logout' onClick={()=> this.logout()}>logout</button>
             </div>
             }
