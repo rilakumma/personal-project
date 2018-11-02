@@ -8,7 +8,7 @@ create table users (
 
 create table items (
     id serial primary key,
-    user int referencing users(id),
+    user_id int REFERENCES users(id),
     name text,
     picture text,
     year text,

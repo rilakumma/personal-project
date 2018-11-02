@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-// import { updateUsername } from '../../ducks/reducer';
+import { updateUsername } from '../../ducks/reducer';
 import axios from 'axios';
 import './Profile.css';
 
@@ -19,8 +19,8 @@ class Profile extends Component {
     }
     sendUsername(id){
         axios.patch(`/api/me/${id}`, {username: this.state.username}).then(res=>{
-            console.log('username', this.state.username)
-            // this.props.updateUsername(this.state.user.username)
+            console.log('res', res.data)
+            this.props.updateUsername(this.state.username)
         }).catch(error => {
             console.log('error', error);
         })
@@ -28,7 +28,7 @@ class Profile extends Component {
 
     render(){
         const { user } = this.props;
-        console.log(this.state.username)
+        // console.log(this.state.username)
         console.log(this.props.user);
         return(
             <div className='profileBox'>
@@ -54,9 +54,9 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state){
-    // console.log(state)
+    console.log(state)
     return{
-            user: state.user 
+            user: state.user
     }
 }
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, {updateUsername})(Profile);

@@ -1,0 +1,19 @@
+.itemview {
+    width: 80vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.itemimg {
+    width: 250px;
+    height: 250px;
+    border-radius: 250px;
+}
+
+.item {
+    text-align: center;
+    border: 1px rgb(148, 147, 147) solid;
+    border-radius: 20px;
+}

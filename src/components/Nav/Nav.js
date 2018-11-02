@@ -9,9 +9,8 @@ class Nav extends Component {
 
     componentDidMount(){
         axios.get('/api/me').then(res=>{
-            console.log(res.data.user)
+            console.log(res.data)
             this.props.userLogin(res.data);
-            // sessionStorage.setItem('user', res.data)
         }).catch(error=>{
             console.log('error', error)
         })
@@ -24,9 +23,6 @@ class Nav extends Component {
         window.location.replace('/');
     }
     
-    // const userObj = JSON.parse(sessionStorage.getItem('user'));
-    // console.log(userObj);
-    // console.log(sessionStorage.getItem('user'));
     render(){
     return(
         this.props.pathname !== '/' && (

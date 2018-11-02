@@ -6,6 +6,7 @@ const session = require('express-session');
 
 const authController = require('./controllers/auth_controller');
 const userController = require('./controllers/user_controller');
+const itemController = require('./controllers/item_controller');
 
 const app = express();
 app.use(bodyParser.json());
@@ -29,6 +30,9 @@ app.patch('/api/me/:id', userController.updateUsername);
 //user authorization with auth0
 app.post('/api/logout', authController.logout);
 app.get('/auth/callback', authController.handleLogin);
+// item controller
+app.post('/api/items/:id', itemController.addItem);
+app.get('/api/items/:id', itemController.getItems);
 
 app.listen(4000, ()=>{
     console.log('Server is listening on port 4000!! ☁️ ☁️ ☁️ ☁️ ☁️');

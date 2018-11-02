@@ -9,9 +9,10 @@ export default class Dashboard extends Component {
             <div>
             <h1>Dashboard</h1>
             <div>my collection</div>
+            <ItemView />
             <div>for sale</div>
             <div>wishlist</div>
-            <ItemView />
+            
 
             </div>
         )
