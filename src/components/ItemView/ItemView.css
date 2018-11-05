@@ -7,13 +7,52 @@
 }
 
 .itemimg {
-    width: 250px;
-    height: 250px;
-    border-radius: 250px;
+    
+    width: 200px;
+    height: 200px;
+    border-radius: 35px;
+    object-fit: contain;
+    padding: 15px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.imgbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 275px;
+    height: 275px;
+    border-radius: 275px;
+    border: 1px solid rgb(148, 147, 147);
 }
 
 .item {
     text-align: center;
     border: 1px rgb(148, 147, 147) solid;
     border-radius: 20px;
+}
+
+.upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 200px;
+    width: 200px;
+    border: 1px rgb(148, 147, 147) solid;
+    border-radius: 20px;
+    /* padding: 20px; */
+}
+
+.inputs {
+    
+    margin:5px;
+}
+
+.uploadbtn {
+    
+    background:rgb(148, 147, 147);
+    height: 20px;
+    border-radius: 10px;
 }
