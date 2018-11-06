@@ -14,5 +14,17 @@ module.exports = {
         }).catch(error=>{
             console.log('error', error);
         })
+    },
+    deleteItem: (req,res)=>{
+        const {user, id} = req.params;
+        req.app.get('db').delete_item({user_id: user, id: id}).then(items=>{
+            res.status(200).json(items)
+        }).catch( error=>{
+            console.log('error with delete',error);
+        })
+    },
+    editItem:(req,res)=>{
+        const {user, id} = req.params;
+        req.app.get('db').edit_item().then()
     }
 }

@@ -33,6 +33,8 @@ app.get('/auth/callback', authController.handleLogin);
 // item controller
 app.post('/api/items/:id', itemController.addItem);
 app.get('/api/items/:id', itemController.getItems);
+app.delete('/api/items/:user/:id', itemController.deleteItem);
+app.patch('/api/items/:user/:id', itemController.editItem);
 
 app.listen(4000, ()=>{
     console.log('Server is listening on port 4000!! ☁️ ☁️ ☁️ ☁️ ☁️');

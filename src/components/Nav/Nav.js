@@ -31,10 +31,8 @@ class Nav extends Component {
             {this.props.user && 
             <div className='userdisplay'>
             <img className='profilepic' src={this.props.user.picture} />
-            {/* {this.props.user.username &&
-            <div>{this.props.user.username}</div>
-            } */}
-            <div>Hi, {this.props.user.name}!</div>
+            
+            <div>Hi, { this.props.user.name }!</div>
             <Link to='/dashboard'><button className='logout'>dashboard</button></Link>
             <Link to='/profile'><button className='logout'>profile</button></Link>
             <button className='logout' onClick={()=> this.logout()}>logout</button>

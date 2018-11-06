@@ -1,11 +1,13 @@
 const INITIAL_STATE = {
     user: null,
-    items: []
+    items: [],
+    picture: ''
 };
 
 const UPDATE_USER = 'UPDATE_USER';
 const UPDATE_USERNANE = 'UPDATE_UESRNAME';
 const ADD_ITEMS = "ADD_ITEMS";
+const ADD_IMG = "ADD_IMG";
 
 export default function reducer(state=INITIAL_STATE, action){
     switch(action.type){
@@ -15,6 +17,8 @@ export default function reducer(state=INITIAL_STATE, action){
         return {...state, username: action.payload};
         case ADD_ITEMS:
         return {...state, items: [...action.payload]};
+        case ADD_IMG:
+        return {...state, picture: action.payload};
         default: return state;
     }
 }
@@ -37,5 +41,12 @@ export function addItem(item){
     return{
         type: ADD_ITEMS,
         payload: item
+    }
+}
+
+export function addPic(picture){
+    return{
+        type: ADD_IMG,
+        payload: picture
     }
 }

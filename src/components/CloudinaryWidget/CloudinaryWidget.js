@@ -2,11 +2,13 @@ import React, {Component} from 'react';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import './CloudinaryWidget.css';
+import { addPic } from './../../ducks/reducer';
+import {connect} from 'react-redux';
 
 const CLOUDINARY_UPLOAD_PRESET = 'prm9b0gh';
 const CLOUDINARY_UPLOAD_URL= 'https://api.cloudinary.com/v1_1/personal-project/image/upload';
 
-export default class CloudinaryWidget extends Component {
+class CloudinaryWidget extends Component {
     constructor(){
         super();
         this.state={
@@ -34,6 +36,7 @@ export default class CloudinaryWidget extends Component {
                 this.setState({
                     uploadedFileCloudinaryUrl: response.body.secure_url
                 });
+                this.props.addPic(response.body.secure_url);
             }
         });
     }
@@ -44,21 +47,30 @@ export default class CloudinaryWidget extends Component {
                 <Dropzone
                 multiple={false}
                 accept="image/*"
-                onDrop={this.onImageDrop.bind(this)} className='fileBox'>
-                <p>Drop an image or click to select</p>
+                onDrop={this.onImageDrop.bind(this)} className='fileBox' uploadedFileCloudinaryUrl={this.state.uploadedFileCloudinaryUrl}>
+                {!this.state.uploadedFileCloudinaryUrl ?
+                <p>Drop an image or click to select</p> :
+                <p>{this.state.uploadedFile.name}</p>
+                }
                 </Dropzone>
                 </div>
 
-                <div>
+                {/* <div>
                     {this.state.uploadedFileCloudinaryUrl === '' ? null :
                 <div>
                     <p>{this.state.uploadedFile.name}</p>
                     <img src={this.state.uploadedFileCloudinaryUrl} />
                 </div>}
-                </div>
+                </div> */}
 
                 
             </form>
         )
     }
 }
+function mapStateToProps(state){
+    return{
+        picture: state.picture
+    }
+}
+export default connect(mapStateToProps,{addPic})(CloudinaryWidget)

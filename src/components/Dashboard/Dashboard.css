@@ -1,3 +1,16 @@
 .dash{
-   margin-left: 25px;
+   margin-left: 225px;
+   
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   flex-direction: column;
+}
+
+h1{
+    margin: 0px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 }

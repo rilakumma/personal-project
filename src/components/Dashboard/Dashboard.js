@@ -10,7 +10,7 @@ export default class Dashboard extends Component {
             <div className='dash'>
             <h1>Dashboard</h1>
             <div>my collection</div>
-            <ItemView />
+            <ItemView pathname={window.location.pathname} />
             <div>for sale</div>
             <div>wishlist</div>
             

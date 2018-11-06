@@ -41,13 +41,13 @@ module.exports = {
                 if(users.length){
                     const user = users[0];
                     req.session.user = user;
-                    res.redirect('/profile');
+                    res.redirect('/dashboard');
                 } else {
                     return req.app.get('db').add_user({auth0_id: userData.sub, name: userData.name, email: userData.email, picture: userData.picture})
                     .then( newUsers => {
                         const newUser = newUsers[0];
                         req.session.user = newUser;
-                        res.redirect('/profile');
+                        res.redirect('/dashboard');
                     }).catch( error => {
                         console.log('error in storing user to database', error);
                         res.status(500).json('Unexpected error has occured');
