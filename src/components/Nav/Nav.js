@@ -27,7 +27,7 @@ class Nav extends Component {
     return(
         this.props.pathname !== '/' && (
         <div className='NavBar'>
-            <Link to='/' className='logo'><div>☁️☁️☁️☁️☁️</div></Link>
+            <Link to='/' className='logo'><div>pompom</div></Link>
             {this.props.user && 
             <div className='userdisplay'>
             <img className='profilepic' src={this.props.user.picture} />

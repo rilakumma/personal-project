@@ -49,6 +49,9 @@ class Home extends Component {
                         </div>
                         : <div><a href={url}>login</a></div>
             }
+            {/* <div className='twitter'>
+            <a class="twitter-timeline" data-width="400" data-height="500" data-theme="light" data-link-color="#ABAAAA" href="https://twitter.com/sanrio?ref_src=twsrc%5Etfw">Tweets by sanrio</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div> */}
             </div>
 
         )
@@ -60,3 +63,4 @@ function mapStateToProps(state){
     }
 }
 export default  connect(mapStateToProps, { userLogin })(Home);
+

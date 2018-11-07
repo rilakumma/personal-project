@@ -91,9 +91,9 @@ render(){
     const showItems = this.props.pathname === '/collection' ? this.props.items.map(item=>{
         return <div className='item'>
             <div className='imgbox'><img src={item.picture} className='itemimg' width={200}/></div>
-            <h3>{item.name}</h3>
-            <p>year: {item.year}</p>
-            <p>description: {item.description}</p>
+            <h3 className='itemname'>{item.name}</h3>
+            <p className='itemyear'>year: {item.year}</p>
+            <p className='itemdesc'>description: {item.description}</p>
             <button className='deletebtn' onClick={()=> this.deleteItem(item.id)}>delete</button>
         </div>
     }) 
@@ -101,9 +101,9 @@ render(){
     this.props.items.slice((this.props.items.length-4),this.props.items.length).reverse().map(item=>{
         return <div className='item'>
             <div className='imgbox'><img src={item.picture} className='itemimg' width={200}/></div>
-            <h3>{item.name}</h3>
-            <p>year: {item.year}</p>
-            <p>description: {item.description}</p>
+            <h3 className='itemname'>{item.name}</h3>
+            <p className='itemyear'>year: {item.year}</p>
+            <p className='itemdesc'>description: {item.description}</p>
             <button className='deletebtn' onClick={()=> this.deleteItem(item.id)}>delete</button>
         </div>
     })
