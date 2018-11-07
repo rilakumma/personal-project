@@ -11,6 +11,16 @@
     justify-content: flex-start;
     flex-wrap: wrap;
 }
+
+.viewall{
+    display: flex;
+    align-items: flex-end;
+    font-size: 13px;
+    text-decoration: none;
+    color: black;
+    width: 50px;
+    padding-bottom: 15px;
+}
 .itemimg {
     
     width: 175px;

@@ -18,6 +18,7 @@ class ItemView extends Component{
             click: false
         }
         this.dropDown = this.dropDown.bind(this);
+        this.fetchItems = this.fetchItems.bind(this);
     }
 
     dropDown(){
@@ -25,14 +26,24 @@ class ItemView extends Component{
     }
 
     componentDidMount(){
-        this.props.user && axios.get(`/api/items/${this.props.user.id}`).then(res=>{
-            // console.log(res.data) 
+            this.props.user && this.fetchItems();
+    }
+
+    fetchItems(){
+        axios.get(`/api/items/${this.props.user.id}`).then(res=>{
             this.props.addItem(res.data)
             this.setState({
                 items: res.data
             })
         })
     }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.user !== this.props.user){
+            this.fetchItems();
+        }
+    }
+    
 
     updateItemName(val){
         this.setState({
@@ -103,24 +114,24 @@ render(){
         <div>
             <div className={this.props.pathname==='/collection'? 'collectview' : 'itemview'}>
             {showItems}
-    {this.props.pathname === '/dashboard' && <Link to='/collection'>view all</Link> }
+            {this.props.pathname === '/dashboard' && <Link to='/collection' className='viewall'>view all</Link> }
             </div>
 
-            <div className='addItem'>
-                <div className='words'>
-                    <div>upload an item to your collection :3
-                    <button onClick={this.dropDown}><img src="https://banner2.kisspng.com/20180203/die/kisspng-arrow-symbol-icon-down-arrow-png-pic-5a756e256c6bb0.6222022915176453494441.jpg" width={20} /></button>
+                <div className='addItem'>
+                    <div className='words'>
+                        <div>upload an item to your collection :3
+                        <button onClick={this.dropDown}><img src="https://banner2.kisspng.com/20180203/die/kisspng-arrow-symbol-icon-down-arrow-png-pic-5a756e256c6bb0.6222022915176453494441.jpg" width={20} /></button>
+                        </div>
+                    </div>
+                    <div className={this.state.click ? 'upload' : 'dont'}>
+                            <input className='inputs' type='text' placeholder='enter item name' onChange={e=> this.updateItemName(e.target.value)}/>
+                            <CloudinaryWidget /> 
+                            {/* <input className='inputs' type='text' placeholder='enter image url' onChange={e=> this.updateItemPic(e.target.value)}/> */}
+                            <input className='inputs' type='integer' placeholder='enter year made' onChange={e=> this.updateItemYear(e.target.value )}/>
+                            <input className='inputs' type='text' placeholder='enter item description' onChange={e=> this.updateItemDesc(e.target.value)}/>
+                            <button className='uploadbtn' onClick={()=> this.addItem()}>upload</button>
                     </div>
                 </div>
-                <div className={this.state.click ? 'upload' : 'dont'}>
-                        <input className='inputs' type='text' placeholder='enter item name' onChange={e=> this.updateItemName(e.target.value)}/>
-                        <CloudinaryWidget /> 
-                        {/* <input className='inputs' type='text' placeholder='enter image url' onChange={e=> this.updateItemPic(e.target.value)}/> */}
-                        <input className='inputs' type='integer' placeholder='enter year made' onChange={e=> this.updateItemYear(e.target.value )}/>
-                        <input className='inputs' type='text' placeholder='enter item description' onChange={e=> this.updateItemDesc(e.target.value)}/>
-                        <button className='uploadbtn' onClick={()=> this.addItem()}>upload</button>
-                </div>
-            </div>
             
             
         </div>
@@ -129,6 +140,7 @@ render(){
 }
 
 function mapStateToProps(state){
+    console.log(state)
     return{
         user: state.user,
         items: state.items,
