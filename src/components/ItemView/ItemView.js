@@ -15,7 +15,9 @@ class ItemView extends Component{
             picture: '',
             year: 0,
             description: '',
-            click: false
+            click: false,
+            editmode: false,
+            editId: 0
         }
         this.dropDown = this.dropDown.bind(this);
         this.fetchItems = this.fetchItems.bind(this);
@@ -84,36 +86,77 @@ class ItemView extends Component{
         })
     }
 
+    editToggle(id){
+        this.setState({
+            editmode: true,
+            editId: id
+        })
+    }
+
+    // editItem(id){
+    //     axios.patch(`/api/items/${this.props.user.id}/${id}`, {user_id: this.props.user.id,
+//             name: this.state.name,
+//             picture: this.props.picture,
+//             year: this.state.year,
+//             description: this.state.description
+// }).then(res=>{
+    // this.props.addItem(res.data);
+    // this.componentDidMount();
+            // this.setState({
+                // editmode: false
+            // })
+    //     })
+    // }
+
 render(){
-    
-    // console.log('url',this.props.picture)
+        const {editmode, editId, items} = this.state;
 
     const showItems = this.props.pathname === '/collection' ? this.props.items.map(item=>{
-        return <div className='item'>
+         return <div className='item'>
             <div className='imgbox'><img src={item.picture} className='itemimg' width={200}/></div>
             <h3 className='itemname'>{item.name}</h3>
             <p className='itemyear'>year: {item.year}</p>
             <p className='itemdesc'>description: {item.description}</p>
             <button className='deletebtn' onClick={()=> this.deleteItem(item.id)}>delete</button>
-        </div>
+            <button className='deletebtn' onClick={()=>this.editToggle(item.id)}>edit</button> 
+        </div> 
     }) 
-    : this.props.pathname === '/dashboard' ?
+    : this.props.pathname === '/dashboard' &&
     this.props.items.slice((this.props.items.length-4),this.props.items.length).reverse().map(item=>{
         return <div className='item'>
             <div className='imgbox'><img src={item.picture} className='itemimg' width={200}/></div>
-            <h3 className='itemname'>{item.name}</h3>
+            <h3 className='itemname'>{item.name}</h3> 
             <p className='itemyear'>year: {item.year}</p>
             <p className='itemdesc'>description: {item.description}</p>
             <button className='deletebtn' onClick={()=> this.deleteItem(item.id)}>delete</button>
+            <button className='deletebtn' onClick={()=>this.editToggle(item.id)}>edit</button>
+            
         </div>
     })
-    :
-    <div>0.0</div>
+    
+   
+
+    const showEditMode = 
+    // this.props.items[this.state.editId].map(item=>{
+        <div className='item'>
+           {/* <div className='imgbox'><img src={item.picture} className='itemimg' width={200}/></div> */}
+            {items[editId] && <input className='inputs' type='text' value={this.props.items[editId].name} onChange={e=> this.updateItemName(e.target.value)}/>}
+            {/* <input className='inputs' type='text' value={item.year} onChange={e=> this.updateItemYear(e.target.value)}/>
+            <input className='inputs' type='text' value={item.description} onChange={e=> this.updateItemDesc(e.target.value)}/>
+            <button className='deletebtn' onClick={()=> this.deleteItem(item.id)}>delete</button>
+            <button className='deletebtn'>save</button> */}
+       </div> 
+//    }) 
+        console.log(this.props.items)
+        console.log(this.props.items[0])
+        console.log(this.state.editId)
+        console.log(this.props.items[this.state.editId])
 
     return(
         <div>
             <div className={this.props.pathname==='/collection'? 'collectview' : 'itemview'}>
-            {showItems}
+            {editmode===false ? showItems : showEditMode}
+            {/* {showItems} */}
             {this.props.pathname === '/dashboard' && <Link to='/collection' className='viewall'>view all</Link> }
             </div>
 
@@ -126,7 +169,6 @@ render(){
                     <div className={this.state.click ? 'upload' : 'dont'}>
                             <input className='inputs' type='text' placeholder='enter item name' onChange={e=> this.updateItemName(e.target.value)}/>
                             <CloudinaryWidget /> 
-                            {/* <input className='inputs' type='text' placeholder='enter image url' onChange={e=> this.updateItemPic(e.target.value)}/> */}
                             <input className='inputs' type='integer' placeholder='enter year made' onChange={e=> this.updateItemYear(e.target.value )}/>
                             <input className='inputs' type='text' placeholder='enter item description' onChange={e=> this.updateItemDesc(e.target.value)}/>
                             <button className='uploadbtn' onClick={()=> this.addItem()}>upload</button>
