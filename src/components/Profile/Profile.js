@@ -34,7 +34,7 @@ class Profile extends Component {
             <div className='profileBox'>
             <h1>Profile</h1>
             {user?
-            <div>
+            <div className='prof'>
             <img src={user.picture} width={200}/>
             {user.username &&
             <div>username:{user.username}</div>

@@ -3,6 +3,7 @@ import './Home.css';
 import axios from 'axios';
 import { userLogin} from './../../ducks/reducer';
 import { connect } from 'react-redux';
+import Sale from './../Sale/Sale';
 
 class Home extends Component {
     constructor(){
@@ -47,12 +48,12 @@ class Home extends Component {
                         ?<div>
                             <div>Welcome, {user.name}</div>
                         </div>
-                        : <div><a href={url}>login</a></div>
+                        : <div><button className='logout'><a href={url}>login</a></button></div>
             }
             {/* <div className='twitter'>
             <a class="twitter-timeline" data-width="400" data-height="500" data-theme="light" data-link-color="#ABAAAA" href="https://twitter.com/sanrio?ref_src=twsrc%5Etfw">Tweets by sanrio</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div> */}
-            
+            {/* <Sale /> */}
             </div>
 
         )

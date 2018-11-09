@@ -114,11 +114,13 @@ render(){
     const showItems = this.props.pathname === '/collection' ? this.props.items.map(item=>{
          return <div className='item'>
             <div className='imgbox'><img src={item.picture} className='itemimg' width={200}/></div>
-            <h3 className='itemname'>{item.name}</h3>
+            {editmode===true ? <input className='inputs' type='text'  onChange={e=> this.updateItemName(e.target.value)}/> : <h3 className='itemname'>{item.name}</h3>}
             <p className='itemyear'>year: {item.year}</p>
             <p className='itemdesc'>description: {item.description}</p>
+            <div className='bottom'>
             <button className='deletebtn' onClick={()=> this.deleteItem(item.id)}>delete</button>
             <button className='deletebtn' onClick={()=>this.editToggle(item.id)}>edit</button> 
+            </div>
         </div> 
     }) 
     : this.props.pathname === '/dashboard' &&
@@ -128,25 +130,14 @@ render(){
             <h3 className='itemname'>{item.name}</h3> 
             <p className='itemyear'>year: {item.year}</p>
             <p className='itemdesc'>description: {item.description}</p>
+            <div className='bottom'>
             <button className='deletebtn' onClick={()=> this.deleteItem(item.id)}>delete</button>
             <button className='deletebtn' onClick={()=>this.editToggle(item.id)}>edit</button>
-            
+            </div>
         </div>
     })
     
    
-
-    const showEditMode = 
-    // this.props.items[this.state.editId].map(item=>{
-        <div className='item'>
-           {/* <div className='imgbox'><img src={item.picture} className='itemimg' width={200}/></div> */}
-            {items[editId] && <input className='inputs' type='text' value={this.props.items[editId].name} onChange={e=> this.updateItemName(e.target.value)}/>}
-            {/* <input className='inputs' type='text' value={item.year} onChange={e=> this.updateItemYear(e.target.value)}/>
-            <input className='inputs' type='text' value={item.description} onChange={e=> this.updateItemDesc(e.target.value)}/>
-            <button className='deletebtn' onClick={()=> this.deleteItem(item.id)}>delete</button>
-            <button className='deletebtn'>save</button> */}
-       </div> 
-//    }) 
         console.log(this.props.items)
         console.log(this.props.items[0])
         console.log(this.state.editId)
@@ -155,9 +146,10 @@ render(){
     return(
         <div>
             <div className={this.props.pathname==='/collection'? 'collectview' : 'itemview'}>
-            {editmode===false ? showItems : showEditMode}
-            {/* {showItems} */}
-            {this.props.pathname === '/dashboard' && <Link to='/collection' className='viewall'>view all</Link> }
+            {/* {this.props.pathname === '/dashboard' && <Link to='/collection' className='viewall'>view all</Link> } */}
+
+            {/* {editmode===false ? showItems : showEditMode} */}
+            {showItems}
             </div>
 
                 <div className='addItem'>

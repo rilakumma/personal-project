@@ -1,7 +1,14 @@
 .profileBox{
     margin-left: 225px;
+    
 }
-
+.prof{
+    border: solid 1px grey;
+    width: fit-content;
+    padding: 20px;
+    border-radius: 30px;
+    margin-top: 30px;
+}
 .noUser {
     margin: 0 auto;
     font-size: 15px;
@@ -10,4 +17,15 @@
 }
 .noUser p {
     margin: 0;
+}
+
+@media screen and (max-width:800px){
+    .profileBox{
+        margin-left: 25px;
+        padding-top: 60px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 }

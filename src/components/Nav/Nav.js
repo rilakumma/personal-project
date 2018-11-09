@@ -6,6 +6,12 @@ import axios from 'axios';
 import './Nav.css';
 
 class Nav extends Component {
+    constructor(){
+        super();
+        this.state={
+            toggleNav:true
+        }
+    }
 
     componentDidMount(){
         axios.get('/api/me').then(res=>{
@@ -22,23 +28,39 @@ class Nav extends Component {
         })
         window.location.replace('/');
     }
-    
+    toggle = ()=>{
+        this.setState((prevState)=>{
+            return{
+                toggleNav: !prevState.toggleNav
+                }
+        })
+    }
+
     render(){
     return(
         this.props.pathname !== '/' && (
         <div className='NavBar'>
+            <div className='header'>
             <Link to='/' className='logo'><div>pompom</div></Link>
+            <img src='./../../../favicon.ico' className='dropBtn' width={30} onClick={this.toggle}/>
+            </div>
+
             {this.props.user && 
+            <div className={this.state.toggleNav? 'show' : ''}>
             <div className='userdisplay'>
             <img className='profilepic' src={this.props.user.picture} />
             
             <div>Hi, { this.props.user.name }!</div>
-            <Link to='/dashboard'><button className='logout'>dashboard</button></Link>
-            <Link to='/profile'><button className='logout'>profile</button></Link>
-            <button className='logout' onClick={()=> this.logout()}>logout</button>
+            <div className='navLinks'>
+            <Link to='/dashboard' className='linky'>dashboard</Link>
+            <Link to='/profile' className='linky'>profile</Link>
+            <div className='linky' onClick={()=> this.logout()}>logout</div>
+            </div>
+            </div>
             </div>
             }
         </div>
+        
         )
     )
 }

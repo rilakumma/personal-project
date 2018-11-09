@@ -5,7 +5,7 @@
     /* justify-content: flex-start; */
     align-items:center;
     flex-direction: column;
-    background: rgb(206, 206, 206);
+    background: rgb(228, 223, 245);
     padding: 30px;
     padding-top: 15px;
     margin: 0px 0px;
@@ -35,3 +35,96 @@
     align-items: center;
     flex-direction: column;
 }
+.navLinks{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 15vh;
+    margin-top: 15px;
+}
+.dropBtn{
+    display:none;
+}
+.linky{
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.linky:hover {
+    font-weight: 800;
+    font-size: 24px;
+}
+
+
+@media screen and (max-width:800px){
+    .NavBar{
+    height: 70px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: row; */
+    background: rgb(228, 223, 245);
+    position: fixed;
+    padding: 0;
+    }
+    .show{
+        transform: translate(0px,0px);
+        display: none;
+        transition: .3s ease-in-out;
+    }
+    .header{
+        width: 90vw;
+        display: flex;
+        height: 70px;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        margin: 0;
+    }
+    .logo{
+        padding: 0;
+    }
+    .dropBtn{
+        display: block;
+    }
+    .navLinks{
+        margin: 0;
+        padding-top: 0;
+    }
+    .profilepic{
+        display:none;
+    }
+    .userdisplay {
+        position: fixed;
+        justify-content: space-evenly;
+        right:0px;
+        top: 0;   
+        transform: translate(0px, 50px);
+        background: rgb(228, 223, 245);
+        opacity: 0.7;
+        width: 150px;
+        height:215px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        transition: .3s ease-in-out;
+        border-radius:20px;
+    }
+    
+}
+
+@media screen and (max-width: 400px){
+    .userdisplay{
+        width: 100%;
+        opacity: 0.95;
+        z-index: -5;
+    }
+    .dropBtn{
+       
+        display: block;
+        
+    }
+}
+
