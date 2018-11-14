@@ -25,7 +25,11 @@ class Profile extends Component {
             console.log('error', error);
         })
     }
-
+    welcomeEmail(){
+        this.props.user && axios.post('/api/email', {email: this.props.user.email}).then(res=>{
+            console.log(res.data)
+        })
+    }
     render(){
         const { user } = this.props;
         // console.log(this.state.username)
@@ -37,11 +41,12 @@ class Profile extends Component {
             <div className='prof'>
             <img src={user.picture} width={200}/>
             {user.username &&
-            <div>username:{user.username}</div>
+            <div>username: {user.username}</div>
             }
             <div>name: {user.name}</div>
             <div>email: {user.email}</div>
-            <div>update username:<input onChange={e => this.updateUsername(e.target.value)} /><button onClick={()=> this.sendUsername(user.auth0_id)}>Update</button></div>
+            <div>update username:<input onChange={e => this.updateUsername(e.target.value)} /><button className='update' onClick={()=> this.sendUsername(user.auth0_id)}>Update</button></div>
+            <button className='welcome' onClick={()=>this.welcomeEmail()}>✨Keep in touch!✨</button>
             </div>
             : <div className="noUser" >
             <p>No user found O.o </p>

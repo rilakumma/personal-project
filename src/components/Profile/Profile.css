@@ -18,6 +18,20 @@
 .noUser p {
     margin: 0;
 }
+.update{
+    background: rgb(148, 147, 147);
+    border-radius: 10px;
+}
+.welcome{
+    height: 25px;
+    width: 150px;
+    border-radius: 10px;
+    background: rgb(245, 223, 226);
+}
+.welcome:hover {
+    font-weight: 800;
+    cursor: pointer;
+}
 
 @media screen and (max-width:800px){
     .profileBox{

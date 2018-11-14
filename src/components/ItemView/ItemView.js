@@ -15,6 +15,8 @@ class ItemView extends Component{
             picture: '',
             year: 0,
             description: '',
+            forsale: false,
+            price: 0,
             click: false,
             editmode: false,
             editId: 0
@@ -93,6 +95,17 @@ class ItemView extends Component{
         })
     }
 
+    saleToggle(id, prevProps){
+        this.setState({
+            forsale: !prevProps
+        })
+        axios.patch(`/api/items/${id}`, {forsale: this.state.forsale}).then(res=>{
+            console.log(res.data);
+            this.componentDidMount();
+        })
+
+    }
+
     // editItem(id){
     //     axios.patch(`/api/items/${this.props.user.id}/${id}`, {user_id: this.props.user.id,
 //             name: this.state.name,
@@ -108,7 +121,26 @@ class ItemView extends Component{
     //     })
     // }
 
+
 render(){
+    console.log('items', this.props.items)
+    let sale = this.props.items.filter(item=> item.forsale === true)
+    console.log(sale)
+    const saleItems = sale.map(item=>{
+        return <div className='item'>
+            <div className='imgbox'><img src={item.picture} className='itemimg' width={200}/></div>
+            <h3 className='itemname'>{item.name}</h3> 
+            <p className='itemyear'>year: {item.year}</p>
+            <p className='itemdesc'>description: {item.description}</p>
+            <p className='itemdesc'>forsale: {item.forsale}</p>
+            <p className='itemdesc'>price: $ {item.price}</p>
+            
+            <div className='bottom'>
+            <button className='deletebtn' onClick={()=> this.deleteItem(item.id)}>delete</button>
+            <button className='deletebtn' onClick={()=>this.editToggle(item.id)}>edit</button>
+            </div>
+        </div>
+    })
         const {editmode, editId, items} = this.state;
 
     const showItems = this.props.pathname === '/collection' ? this.props.items.map(item=>{
@@ -130,6 +162,7 @@ render(){
             <h3 className='itemname'>{item.name}</h3> 
             <p className='itemyear'>year: {item.year}</p>
             <p className='itemdesc'>description: {item.description}</p>
+            <div>For sale? <input type='checkbox' onClick={()=>this.saleToggle(item.id)} /></div>
             <div className='bottom'>
             <button className='deletebtn' onClick={()=> this.deleteItem(item.id)}>delete</button>
             <button className='deletebtn' onClick={()=>this.editToggle(item.id)}>edit</button>
@@ -150,6 +183,11 @@ render(){
 
             {/* {editmode===false ? showItems : showEditMode} */}
             {showItems}
+            </div>
+
+            <div>
+                test...
+                {saleItems}
             </div>
 
                 <div className='addItem'>

@@ -46,6 +46,7 @@
 
 .item {
     height: fit-content;
+    width: fit-content;
     text-align: center;
     border: 1px rgb(148, 147, 147) solid;
     border-radius: 20px;

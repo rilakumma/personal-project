@@ -12,5 +12,8 @@ create table items (
     name text,
     picture text,
     year text,
-    description text
+    description text,
+    forsale boolean default false,
+    price integer default 0
 );
+

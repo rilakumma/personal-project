@@ -2,6 +2,12 @@ import React, {Component} from 'react';
 import Checkout from './../Checkout/Checkout';
 
 export default class Sale extends Component {
+    constructor(){
+        super();
+        this.state={
+            sale: []
+        }
+    }
     render(){
         return(
             <div>

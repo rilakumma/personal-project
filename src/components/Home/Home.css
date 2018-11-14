@@ -1,9 +1,10 @@
 .home{
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-left: 50px;
+
 }
 .logout{
     background: grey;

@@ -9,7 +9,7 @@ class Nav extends Component {
     constructor(){
         super();
         this.state={
-            toggleNav:true
+            toggleNav:false
         }
     }
 
@@ -46,16 +46,16 @@ class Nav extends Component {
             </div>
 
             {this.props.user && 
-            <div className={this.state.toggleNav? 'show' : ''}>
+            <div className={this.state.toggleNav? 'toggler show' : 'toggler hide'}>
             <div className='userdisplay'>
-            <img className='profilepic' src={this.props.user.picture} />
-            
-            <div>Hi, { this.props.user.name }!</div>
-            <div className='navLinks'>
-            <Link to='/dashboard' className='linky'>dashboard</Link>
-            <Link to='/profile' className='linky'>profile</Link>
-            <div className='linky' onClick={()=> this.logout()}>logout</div>
-            </div>
+                <img className='profilepic' src={this.props.user.picture} />
+                
+                <div>Hi, { this.props.user.name }!</div>
+                <div className='navLinks'>
+                <Link to='/dashboard' className='linky'>dashboard</Link>
+                <Link to='/profile' className='linky'>profile</Link>
+                <div className='linky' onClick={()=> this.logout()}>logout</div>
+                </div>
             </div>
             </div>
             }

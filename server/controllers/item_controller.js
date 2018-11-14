@@ -30,5 +30,13 @@ module.exports = {
         }).catch(error=>{
             console.error('error with edit', error);
         })
+    },
+    editForSale:(req,res)=>{
+        const {id} = req.params;
+        req.app.get('db').edit_sale({id: id, forsale: req.body.forsale}).then(items=>{
+            res.status(200).json(items);
+        }).catch(error=>{
+            console.error('error editing sale status', error);
+        })
     }
 }

@@ -27,6 +27,8 @@ app.use( express.static( `${__dirname}/../build` ) );
 //user controller
 app.get('/api/me', userController.getUser);
 app.patch('/api/me/:id', userController.updateUsername);
+
+app.post('/api/email', userController.sendEmail);
 //user authorization with auth0
 app.post('/api/logout', authController.logout);
 app.get('/auth/callback', authController.handleLogin);
@@ -35,6 +37,7 @@ app.post('/api/items/:id', itemController.addItem);
 app.get('/api/items/:id', itemController.getItems);
 app.delete('/api/items/:user/:id', itemController.deleteItem);
 app.patch('/api/items/:user/:id', itemController.editItem);
+app.patch('/api/items/:id', itemController.editForSale);
 
 app.listen(4000, ()=>{
     console.log('Server is listening on port 4000!! ☁️ ☁️ ☁️ ☁️ ☁️');
