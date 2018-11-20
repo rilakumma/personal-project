@@ -3,7 +3,6 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import './ItemView.css';
 import { addItem } from './../../ducks/reducer';
-import CloudinaryWidget from '../CloudinaryWidget/CloudinaryWidget';
 import {Link} from 'react-router-dom';
 
 class ItemView extends Component{
@@ -11,18 +10,13 @@ class ItemView extends Component{
         super();
         this.state={
             items: [],
-            name: '',
-            picture: '',
-            year: 0,
-            description: '',
-            forsale: false,
-            price: 0,
             click: false,
             editmode: false,
             editId: 0
         }
         this.dropDown = this.dropDown.bind(this);
         this.fetchItems = this.fetchItems.bind(this);
+        
     }
 
     dropDown(){
@@ -49,38 +43,43 @@ class ItemView extends Component{
     }
     
 
-    updateItemName(val){
-        this.setState({
-            name: val
-        })
-    }
-    updateItemYear(val){
-        this.setState({
-            year: val
-        })
-    }
-    updateItemDesc(val){
-        this.setState({
-            description: val
-        })
-    }
+    // updateItemName(val){
+    //     this.setState({
+    //         name: val
+    //     })
+    // }
+    // updateItemYear(val){
+    //     this.setState({
+    //         year: val
+    //     })
+    // }
+    // updateItemDesc(val){
+    //     this.setState({
+    //         description: val
+    //     })
+    // }
+    // updatePrice(val){
+    //     this.setState({
+    //         price: val
+    //     })
+    // }
 
-    addItem(){
-        this.props.user.id &&
-        axios.post(`/api/items/${this.props.user.id}`, {
-            user_id: this.props.user.id,
-            name: this.state.name,
-            picture: this.props.picture,
-            year: this.state.year,
-            description: this.state.description
+    // addItem(){
+    //     this.props.user.id &&
+    //     axios.post(`/api/items/${this.props.user.id}`, {
+    //         user_id: this.props.user.id,
+    //         name: this.state.name,
+    //         picture: this.props.picture,
+    //         year: this.state.year,
+    //         description: this.state.description
 
-        } ).then(res=>{
-            console.log(res.data)
-            this.props.addItem(res.data);
-            this.componentDidMount();
-        })
+    //     } ).then(res=>{
+    //         console.log(res.data)
+    //         this.props.addItem(res.data);
+    //         this.componentDidMount();
+    //     })
         
-    }
+    // }
 
     deleteItem(id){
         axios.delete(`/api/items/${this.props.user.id}/${id}`).then(res=>{
@@ -103,7 +102,6 @@ class ItemView extends Component{
             console.log(res.data);
             this.componentDidMount();
         })
-
     }
 
     // editItem(id){
@@ -178,33 +176,27 @@ render(){
 
     return(
         <div>
+            <div>
+            <h3>my collection</h3>
+            <p><Link to='/collection' className='viewall'>view all</Link></p>
+            </div>
+
+
+            {/* display items section */}
             <div className={this.props.pathname==='/collection'? 'collectview' : 'itemview'}>
             {/* {this.props.pathname === '/dashboard' && <Link to='/collection' className='viewall'>view all</Link> } */}
-
             {/* {editmode===false ? showItems : showEditMode} */}
             {showItems}
             </div>
 
-            <div>
-                test...
+            <h3>for sale</h3>
+            <div className='itemview'>
                 {saleItems}
             </div>
 
-                <div className='addItem'>
-                    <div className='words'>
-                        <div>upload an item to your collection :3
-                        <button onClick={this.dropDown}><img src="https://banner2.kisspng.com/20180203/die/kisspng-arrow-symbol-icon-down-arrow-png-pic-5a756e256c6bb0.6222022915176453494441.jpg" width={20} /></button>
-                        </div>
-                    </div>
-                    <div className={this.state.click ? 'upload' : 'dont'}>
-                            <input className='inputs' type='text' placeholder='enter item name' onChange={e=> this.updateItemName(e.target.value)}/>
-                            <CloudinaryWidget /> 
-                            <input className='inputs' type='integer' placeholder='enter year made' onChange={e=> this.updateItemYear(e.target.value )}/>
-                            <input className='inputs' type='text' placeholder='enter item description' onChange={e=> this.updateItemDesc(e.target.value)}/>
-                            <button className='uploadbtn' onClick={()=> this.addItem()}>upload</button>
-                    </div>
-                </div>
-            
+            <div>
+            <h3>wishlist</h3>
+            </div>
             
         </div>
     )

@@ -24,6 +24,7 @@ massive(process.env.CONNECTION_STRING).then(database=>{
 
 app.use( express.static( `${__dirname}/../build` ) );
 
+
 //user controller
 app.get('/api/me', userController.getUser);
 app.patch('/api/me/:id', userController.updateUsername);

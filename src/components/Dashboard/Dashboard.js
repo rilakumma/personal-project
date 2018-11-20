@@ -8,11 +8,9 @@ export default class Dashboard extends Component {
     render(){
         return(
             <div className='dash'>
-            <h1>Dashboard</h1>
-            <div>my collection</div>
+            {/* <h1>Dashboard</h1> */}
             <ItemView pathname={window.location.pathname} />
-            <div>for sale</div>
-            <div>wishlist</div>
+            
             
 
             </div>

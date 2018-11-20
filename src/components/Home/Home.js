@@ -3,16 +3,18 @@ import './Home.css';
 import axios from 'axios';
 import { userLogin} from './../../ducks/reducer';
 import { connect } from 'react-redux';
-import Sale from './../Sale/Sale';
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
 
 class Home extends Component {
     constructor(){
         super();
         this.state={
             loading: true,
-            error: null
+            error: null,
+            tweets:[]
         }
     }
+
     componentDidMount(){
         axios.get('/api/me').then(res=>{
             this.props.userLogin(res.data);
@@ -36,26 +38,46 @@ class Home extends Component {
         console.log(this.props.user);
         return(
             <div className='home'>
-            <h1>home</h1>
-            {user &&
-            <div><button className='logout' onClick={this.logout}>logout</button></div>
-            }
-            {loading? 
-                <div>Loading...</div> 
-                : error 
-                    ? <div>There was an error loading</div>
-                    : user
-                        ?<div>
-                            <div>Welcome, {user.name}</div>
-                        </div>
-                        : <div><button className='logout'><a href={url}>login</a></button></div>
-            }
-            {/* <div className='twitter'>
-            <a class="twitter-timeline" data-width="400" data-height="500" data-theme="light" data-link-color="#ABAAAA" href="https://twitter.com/sanrio?ref_src=twsrc%5Etfw">Tweets by sanrio</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div> */}
-            {/* <Sale /> */}
-            </div>
+            
+                    <div className='left'>
+                    <div className='bubble'>
+                    <h1 className='title'>pompom</h1>
+                    </div>
+                    </div>
 
+
+                    <div className='middle'>
+                    <div className='welcomebub'>
+                    {loading? 
+                        <div>Loading...</div> 
+                        : error 
+                            ? <div>There was an error loading</div>
+                            : user
+                                ?   <div>
+                                    <div>Welcome, {user.name}</div>
+                                    <div className='logoutlink' onClick={this.logout}>logout</div></div>
+                            
+                                : <div><a href={url} className='login'>login</a></div>
+                    }
+                    </div></div>
+
+
+
+                    <div className='right'>
+                    <div className='twitterbox'>
+                        <TwitterTimelineEmbed
+                        sourceType="profile"
+                        screenName="sanrio"
+                        options={{height: 400}}
+                        style={{background:"pink"}}
+                        />
+                    </div>
+                    </div>
+            
+
+
+
+            </div>
         )
     }
 }

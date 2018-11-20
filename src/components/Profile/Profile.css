@@ -1,13 +1,13 @@
 .profileBox{
     margin-left: 225px;
-    
+    padding-top: 70px;
 }
 .prof{
     border: solid 1px grey;
     width: fit-content;
     padding: 20px;
     border-radius: 30px;
-    margin-top: 30px;
+    padding-top: 30px;
 }
 .noUser {
     margin: 0 auto;

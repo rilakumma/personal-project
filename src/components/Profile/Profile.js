@@ -36,7 +36,7 @@ class Profile extends Component {
         console.log(this.props.user);
         return(
             <div className='profileBox'>
-            <h1>Profile</h1>
+            {/* <h1>Profile</h1> */}
             {user?
             <div className='prof'>
             <img src={user.picture} width={200}/>
