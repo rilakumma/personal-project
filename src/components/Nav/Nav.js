@@ -119,7 +119,7 @@ class Nav extends Component {
 
                     <div className='addItem'>
                             <div>
-                                <div className='linky' onClick={this.togglePopup}>&#43 new item</div>
+                                <div className='add' onClick={this.togglePopup}><span className='addbtn'>&#43;</span> new item</div>
                             </div>
                             <div className={this.state.popup ? 'popup' : 'closepop'}>
                             {/* <div className={this.state.click ? 'upload' : 'dont'}> */}
