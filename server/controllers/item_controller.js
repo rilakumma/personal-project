@@ -25,7 +25,7 @@ module.exports = {
     },
     editItem:(req,res)=>{
         const {user, id} = req.params;
-        req.app.get('db').edit_item({user_id: user, id: id}).then(items=>{
+        req.app.get('db').edit_item({user_id: user, id: id, name: req.body.name, picture: req.body.picture, year: req.body.year, description: req.body.description, forsale: req.body.forsale, price: req.body.price}).then(items=>{
             res.status(200).json(items);
         }).catch(error=>{
             console.error('error with edit', error);

@@ -126,10 +126,10 @@ class Nav extends Component {
                                 <div className='popup-content'>
                                 <span onClick={this.togglePopup} className={this.state.popup ?'close' : 'closepop'}>&times;</span>
                                     <div className='inputform'>
-                                    <input className='inputs' type='text' placeholder='enter item name' onChange={e=> this.updateItemName(e.target.value)}/>
+                                    <input className='inputz' type='text' placeholder='enter item name' onChange={e=> this.updateItemName(e.target.value)}/>
                                     <CloudinaryWidget /> 
-                                    <input className='inputs' type='integer' placeholder='enter year made' onChange={e=> this.updateItemYear(e.target.value )}/>
-                                    <input className='inputs' type='text' placeholder='enter item description' onChange={e=> this.updateItemDesc(e.target.value)}/>
+                                    <input className='inputz' type='integer' placeholder='enter year made' onChange={e=> this.updateItemYear(e.target.value )}/>
+                                    <input className='inputz' type='text' placeholder='enter item description' onChange={e=> this.updateItemDesc(e.target.value)}/>
                                     <button className='uploadbtn' onClick={()=> this.addItem()}>upload</button>
                                     </div>
                                     </div>

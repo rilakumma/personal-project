@@ -118,6 +118,17 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+}
+
+.inputz{
+    height: 30px;
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid black;
+    background: rgb(253, 242, 244);
+    font-size: 20px;
+    margin: 10px;
 }
 .close{
     float: right;
