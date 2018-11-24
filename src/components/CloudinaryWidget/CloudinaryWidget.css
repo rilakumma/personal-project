@@ -1,13 +1,14 @@
 .fileUpload {
-    width: 130px;
-    height: 75px;
+    width: 360px;
+    height: 90px;
     border-width: 1px;
     border-color: rgb(148, 147, 147);
     border-style: dashed;
     border-radius: 5px;
-    font-size: 13px;
+    font-size: 16px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }

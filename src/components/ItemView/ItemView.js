@@ -18,7 +18,7 @@ class ItemView extends Component{
         }
         this.dropDown = this.dropDown.bind(this);
         this.fetchItems = this.fetchItems.bind(this);
-        
+        this.scrollFunction = this.scrollFunction.bind(this);
     }
 
     dropDown(){
@@ -106,6 +106,19 @@ class ItemView extends Component{
                 this.componentDidMount();
             }
 
+    toTop(){
+        document.documentElement.scrollTop =0;
+    }
+
+    scrollFunction() {
+        if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
+            return <div className='scroller'>
+                <button onClick={()=> this.toTop()}
+                >back to top</button>
+            </div>
+        } 
+    }
+
 
 render(){
     console.log('items', this.props.items)
@@ -170,15 +183,20 @@ render(){
     })
     
         
-
+    
     return(
+        
         <div>
             <div>
+                
             <h3>my collection</h3>
             <p><Link to='/collection' className='viewall'>view all</Link></p>
             </div>
-
-
+            
+            <div className='scroller'>
+                <button onClick={()=> this.toTop()}
+                >back to top</button>
+            </div>
             {/* display items section */}
             <div className={this.props.pathname==='/collection'? 'collectview' : 'itemview'}>
             {/* {this.props.pathname === '/dashboard' && <Link to='/collection' className='viewall'>view all</Link> } */}

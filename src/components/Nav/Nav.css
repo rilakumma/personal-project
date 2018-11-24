@@ -130,6 +130,17 @@
     font-size: 20px;
     margin: 10px;
 }
+.uploadbtn {
+    width: 100px;
+    background:rgb(148, 147, 147);
+    height: 45px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+.uploadbtn:hover{
+    cursor: pointer;
+}
+
 .close{
     float: right;
     width: 1.5rem;
