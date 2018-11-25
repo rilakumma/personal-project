@@ -3,7 +3,6 @@ import './Home.css';
 import axios from 'axios';
 import { userLogin} from './../../ducks/reducer';
 import { connect } from 'react-redux';
-import {TwitterTimelineEmbed} from 'react-twitter-embed';
 import {Link} from 'react-router-dom';
 
 class Home extends Component {
@@ -90,12 +89,6 @@ class Home extends Component {
                 </div>
                 <div className='middlebanner'>
                     <img src='https://vignette.wikia.nocookie.net/hellokitty/images/2/21/Sanrio_Characters_Corocorokuririn--Chibikuri--Cherri--Chacha_Image001.png/revision/latest?cb=20170408005620' className='second' />
-                    
-                    <div className='tweetbox'><TwitterTimelineEmbed
-                        sourceType="profile"
-                        screenName="sanrio"
-                        options={{height: 400}}
-                        /></div>
                 </div>
             
 

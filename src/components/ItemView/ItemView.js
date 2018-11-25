@@ -176,29 +176,24 @@ render(){
         <div>
             
             {this.props.pathname==='/dashboard' &&     
-            <div>
-            <h3>my collection</h3>
-            <p><Link to='/collection' className='viewall'>view all</Link></p>
-            </div>
+                <div>
+                <h3>my collection</h3>
+                <p><Link to='/collection' className='viewall'>view all</Link></p>
+                </div>
             }
+                <div className={this.props.pathname==='/collection'? 'collectview' : 'itemview'}>
+                {showItems}
+                </div>
 
-            {/* display items section */}
-            <div className={this.props.pathname==='/collection'? 'collectview' : 'itemview'}>
-            {/* {this.props.pathname === '/dashboard' && <Link to='/collection' className='viewall'>view all</Link> } */}
-            {/* {editmode===false ? showItems : showEditMode} */}
-            
-            {showItems}
-            </div>
+                <h3>for sale</h3>
+                <p className='viewall'>view all</p>
+                <div className='itemview'>
+                    {saleItems}
+                </div>
 
-            <h3>for sale</h3>
-            <p className='viewall'>view all</p>
-            <div className='itemview'>
-                {saleItems}
-            </div>
-
-            <div>
-            <h3>wishlist</h3>
-            </div>
+                <div>
+                <h3>wishlist</h3>
+                </div>
         </div>
     )
 }
