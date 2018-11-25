@@ -18,7 +18,6 @@ class ItemView extends Component{
         }
         this.dropDown = this.dropDown.bind(this);
         this.fetchItems = this.fetchItems.bind(this);
-        this.scrollFunction = this.scrollFunction.bind(this);
     }
 
     dropDown(){
@@ -31,6 +30,7 @@ class ItemView extends Component{
 
     fetchItems(){
         axios.get(`/api/items/${this.props.user.id}`).then(res=>{
+            console.log('items',res.data)
             this.props.addItem(res.data)
             this.setState({
                 items: res.data
@@ -76,7 +76,7 @@ class ItemView extends Component{
                 console.log('name', val)
                 console.log('editee', this.state.editee)
                 this.setState({
-                    editee:  {...this.state.editee, name: val}
+                    editee:  {...this.state.editee, title: val}
                 })
             }
             updateItemYear(val){
@@ -106,19 +106,6 @@ class ItemView extends Component{
                 this.componentDidMount();
             }
 
-    toTop(){
-        document.documentElement.scrollTop =0;
-    }
-
-    scrollFunction() {
-        if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
-            return <div className='scroller'>
-                <button onClick={()=> this.toTop()}
-                >back to top</button>
-            </div>
-        } 
-    }
-
 
 render(){
     console.log('items', this.props.items)
@@ -126,8 +113,8 @@ render(){
     console.log(sale)
     const saleItems = sale.map(item=>{
         return <div className='item'>
-            <div className='imgbox'><img src={item.picture} className='itemimg' width={200}/></div>
-            <h3 className='itemname'>{item.name}</h3> 
+            <div className='imgbox'><img src={item.photo} className='itemimg' width={200}/></div>
+            <h3 className='itemname'>{item.title}</h3> 
             <p className='itemyear'>year: {item.year}</p>
             <p className='itemdesc'>description: {item.description}</p>
             <p className='itemdesc'>price: $ {item.price}</p>
@@ -140,10 +127,10 @@ render(){
     })
         
 
-    const showItems = this.props.pathname === '/collection' ? this.props.items.map(item=>{
+    const showItems = this.props.pathname === '/collection' ? this.props.items.reverse().map(item=>{
          return <div className='item'>
-            <div className='imgbox'><img src={item.picture} className='itemimg' width={200}/></div>
-            {this.state.editmode ? <input className='inputs' type='text' onChange={e=> this.updateItemName(e.target.value)}/> : <h3 className='itemname'>{item.name}</h3> }
+            <div className='imgbox'><img src={item.photo} className='itemimg' width={200}/></div>
+            {this.state.editmode ? <input className='inputs' type='text' onChange={e=> this.updateItemName(e.target.value)}/> : <h3 className='itemname'>{item.title}</h3> }
     {this.state.editmode? <input className='inputs' type='integer' onChange={e=> this.updateItemYear(e.target.value )}/> : <p className='itemyear'>year: {item.year}</p> }
     {this.state.editmode ? <input className='inputs' type='text' onChange={e=> this.updateItemDesc(e.target.value)}/> : <p className='itemdesc'>description: {item.description}</p> }
             {this.state.editmode? <input className='inputs' type='text' onChange={e=> this.updatePrice(e.target.value)}/> : <p className='itemdesc'>price: $ {item.price}</p> }
@@ -168,8 +155,8 @@ render(){
                 </div> 
             :
                 <div>
-                <div className='imgbox'><img src={item.picture} className='itemimg' width={200}/></div>
-                <h3 className='itemname'>{item.name}</h3> 
+                <div className='imgbox'><img src={item.photo} className='itemimg' width={200}/></div>
+                <h3 className='itemname'>{item.title}</h3> 
                 <p className='itemyear'>year: {item.year}</p>
                 <p className='itemdesc'>description: {item.description}</p>
                 <div>For sale? <input type='checkbox' onClick={()=>this.saleToggle(item.id)} /></div>
@@ -187,24 +174,24 @@ render(){
     return(
         
         <div>
+            
+            {this.props.pathname==='/dashboard' &&     
             <div>
-                
             <h3>my collection</h3>
             <p><Link to='/collection' className='viewall'>view all</Link></p>
             </div>
-            
-            <div className='scroller'>
-                <button onClick={()=> this.toTop()}
-                >back to top</button>
-            </div>
+            }
+
             {/* display items section */}
             <div className={this.props.pathname==='/collection'? 'collectview' : 'itemview'}>
             {/* {this.props.pathname === '/dashboard' && <Link to='/collection' className='viewall'>view all</Link> } */}
             {/* {editmode===false ? showItems : showEditMode} */}
+            
             {showItems}
             </div>
 
             <h3>for sale</h3>
+            <p className='viewall'>view all</p>
             <div className='itemview'>
                 {saleItems}
             </div>
@@ -212,7 +199,6 @@ render(){
             <div>
             <h3>wishlist</h3>
             </div>
-            
         </div>
     )
 }
@@ -223,7 +209,7 @@ function mapStateToProps(state){
     return{
         user: state.user,
         items: state.items,
-        picture: state.picture
+        photo: state.photo
     }
 }
 export default connect(mapStateToProps, {addItem})(ItemView)

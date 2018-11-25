@@ -15,7 +15,7 @@ function mapStateToProps(state){
     return{
         user: state.user,
         items: state.items,
-        picture: state.picture
+        photo: state.photo
     }
 }
 export default connect(mapStateToProps)(Collection);

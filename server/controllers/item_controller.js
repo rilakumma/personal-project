@@ -7,9 +7,16 @@ module.exports = {
             console.error('error getting items', error);
         })
     },
+    allItems: (req,res)=>{
+        req.app.get('db').all_items().then(items=>{
+            res.status(200).send(items);
+        }).catch(error=>{
+            console.error('error getting all items', error);
+        })
+    },
     addItem: (req,res)=>{
         const {id} = req.params;
-        req.app.get('db').add_item({user_id: id, name: req.body.name, picture: req.body.picture, year: req.body.year, description: req.body.description}).then( items =>{
+        req.app.get('db').add_item({user_id: id, title: req.body.title, photo: req.body.photo, year: req.body.year, description: req.body.description}).then( items =>{
             res.status(200).json(items);
         }).catch(error=>{
             console.log('error adding item', error);
@@ -25,7 +32,7 @@ module.exports = {
     },
     editItem:(req,res)=>{
         const {user, id} = req.params;
-        req.app.get('db').edit_item({user_id: user, id: id, name: req.body.name, picture: req.body.picture, year: req.body.year, description: req.body.description, forsale: req.body.forsale, price: req.body.price}).then(items=>{
+        req.app.get('db').edit_item({user_id: user, id: id, title: req.body.title, photo: req.body.photo, year: req.body.year, description: req.body.description, forsale: req.body.forsale, price: req.body.price}).then(items=>{
             res.status(200).json(items);
         }).catch(error=>{
             console.error('error with edit', error);

@@ -70,7 +70,7 @@ class CloudinaryWidget extends Component {
 }
 function mapStateToProps(state){
     return{
-        picture: state.picture
+        photo: state.photo
     }
 }
 export default connect(mapStateToProps,{addPic})(CloudinaryWidget)

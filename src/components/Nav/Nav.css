@@ -96,22 +96,23 @@
     height: 100vh;
     width: 100vw;
     z-index: 10;
-    opacity: 1;
     visibility: visible;
-    /* transform: scale(1.0); */
-    /* transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;  */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4);
     }
 .popup-content{
     position: fixed;
     top: 25%;
     left: 25%;
-    /* transform: translate(-50%, -50%); */
     background-color: rgb(253, 242, 244);
     opacity: 0.9;
     padding: 1rem 1.5rem;
     height: 300px;
     width: 500px;
     border-radius: 0.5rem;
+    box-shadow: 0.4px 0.5px 20px 3px rgba(0,0,0, 0.767);
 }
 .inputform{
     display: flex;

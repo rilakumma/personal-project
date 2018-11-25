@@ -9,8 +9,8 @@ create table users (
 create table items (
     id serial primary key,
     user_id int REFERENCES users(id),
-    name text,
-    picture text,
+    title text,
+    photo text,
     year text,
     description text,
     forsale boolean default false,

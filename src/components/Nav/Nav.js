@@ -11,8 +11,8 @@ class Nav extends Component {
         super();
         this.state={
             toggleNav:false,
-            name: '',
-            picture: '',
+            title: '',
+            photo: '',
             year: 0,
             description: '',
             forsale: false,
@@ -47,7 +47,7 @@ class Nav extends Component {
 
     updateItemName(val){
         this.setState({
-            name: val
+            title: val
         })
     }
     updateItemYear(val){
@@ -70,8 +70,8 @@ class Nav extends Component {
         this.props.user.id &&
         axios.post(`/api/items/${this.props.user.id}`, {
             user_id: this.props.user.id,
-            name: this.state.name,
-            picture: this.props.picture,
+            title: this.state.title,
+            photo: this.props.photo,
             year: this.state.year,
             description: this.state.description
 
@@ -106,7 +106,7 @@ class Nav extends Component {
             <div className='userdisplay'>
                 <img className='profilepic' src={this.props.user.picture} />
                 
-                <div>Hi, { this.props.user.name }!</div>
+                <div>Hi, { this.props.user.username }!</div>
                 <div className='navLinks'>
                 <Link to='/dashboard' className='linky'>dashboard</Link>
                 <Link to='/profile' className='linky'>profile</Link>
@@ -146,7 +146,7 @@ function mapStateToProps(state){
     return{
         user: state.user,
         items: state.items,
-        picture: state.picture
+        photo: state.photo
     }
 }
 export default connect(mapStateToProps, {userLogin, addItem})(Nav);

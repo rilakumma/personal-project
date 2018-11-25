@@ -36,6 +36,7 @@ app.get('/auth/callback', authController.handleLogin);
 // item controller
 app.post('/api/items/:id', itemController.addItem);
 app.get('/api/items/:id', itemController.getItems);
+app.get('/api/items', itemController.allItems);
 app.delete('/api/items/:user/:id', itemController.deleteItem);
 app.patch('/api/items/:user/:id', itemController.editItem);
 app.patch('/api/items/:id', itemController.editForSale);

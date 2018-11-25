@@ -1,5 +1,5 @@
 INSERT INTO items
-(user_id, name, picture, year, description)
+(user_id, title, photo, year, description)
 VALUES
-(${user_id}, ${name}, ${picture}, ${year}, ${description})
+(${user_id}, ${title}, ${photo}, ${year}, ${description})
 returning *;
