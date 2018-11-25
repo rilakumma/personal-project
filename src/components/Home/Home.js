@@ -4,6 +4,7 @@ import axios from 'axios';
 import { userLogin} from './../../ducks/reducer';
 import { connect } from 'react-redux';
 import {TwitterTimelineEmbed} from 'react-twitter-embed';
+import {Link} from 'react-router-dom';
 
 class Home extends Component {
     constructor(){
@@ -18,6 +19,11 @@ class Home extends Component {
     componentDidMount(){
        this.getUser();
        this.recentItems();
+    }
+    componentDidUpdate(prevState){
+        if(prevState.recent !== this.state.recent){
+            this.recentItems();
+        }
     }
     getUser=()=>{
         axios.get('/api/me').then(res=>{
@@ -60,7 +66,7 @@ class Home extends Component {
             <div className='home'>
 
                 <div className='head'>
-                    <h1 className='title'>pompom</h1>
+                    <Link to='/' className='linktitle'><h1 className='title'>pompom</h1></Link>
                     {user
                                 ?   <div className='loggedin'>
                                     <div>Welcome, {user.username}</div>
