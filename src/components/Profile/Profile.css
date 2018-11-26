@@ -3,11 +3,57 @@
     padding-top: 70px;
 }
 .prof{
+    display: flex;
     border: solid 1px grey;
     width: fit-content;
     padding: 20px;
     border-radius: 30px;
     padding-top: 30px;
+}
+.anotherdiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.profpic{
+    height: 200px;
+    width: 200px;
+    border-radius: 200px;
+}
+.information{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+.userinfo{
+    margin-top: 20px;
+    height: 40px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+.usernameinfo {
+    margin-top: 20px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.updatename{
+    height: fit-content;
+    font-size: 20px;
+    width: fit-content;
+    background: none;
+    border: none;
+}
+.usernameinput{
+    border: none;
+    border-bottom: 2px solid black;
+    font-size: 18px;
+    font-weight: bold;
+}
+.updatename:hover{
+    cursor: pointer;
 }
 .noUser {
     margin: 0 auto;
@@ -23,23 +69,55 @@
     border-radius: 10px;
 }
 .welcome{
-    height: 25px;
-    width: 150px;
+    align-self: center;
+    height: 50px;
+    width: fit-content;
     border-radius: 10px;
     background: rgb(245, 223, 226);
+    font-size: 20px;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
 }
 .welcome:hover {
-    font-weight: 800;
     cursor: pointer;
 }
 
 @media screen and (max-width:800px){
     .profileBox{
         margin-left: 25px;
-        padding-top: 60px;
+        padding-top: 80px;
         display:flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
+    .prof{
+        border: none;
+    }
+}
+
+@media screen and (max-width:400px){
+    .information{
+        margin: 0;
+        padding: 8px;
+    }
+    .profileBox{
+        margin:0;
+        padding: 0;
+    }
+    .userinfo{
+        font-size: 18px;
+    }
+   .prof{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       flex-direction: column;
+       width:100vw;
+       height: 100vh;
+       margin: 0;
+       padding:0;
+   }
 }

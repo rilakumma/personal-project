@@ -1,0 +1,15 @@
+.searchresults{
+    height: 150px;
+    width: fit-content;
+    color: grey;
+    overflow: scroll;
+}
+.searchbar{
+    margin-top: 50px;
+    height: 30px;
+    width: 100%;
+    font-size: 20px;
+    border: none;
+    border-bottom: 2px solid grey;
+    background: none;
+}

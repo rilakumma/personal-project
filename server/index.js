@@ -28,7 +28,7 @@ app.use( express.static( `${__dirname}/../build` ) );
 //user controller
 app.get('/api/me', userController.getUser);
 app.patch('/api/me/:id', userController.updateUsername);
-
+app.get('/api/users', userController.getUsers);
 app.post('/api/email', userController.sendEmail);
 //user authorization with auth0
 app.post('/api/logout', authController.logout);

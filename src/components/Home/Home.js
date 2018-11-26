@@ -11,13 +11,15 @@ class Home extends Component {
         this.state={
             loading: true,
             error: null,
-            recent: []
+            recent: [],
+            users: []
         }
     }
 
     componentDidMount(){
        this.getUser();
        this.recentItems();
+       this.getUsers();
     }
     componentDidUpdate(prevState){
         if(prevState.recent !== this.state.recent){
@@ -31,6 +33,14 @@ class Home extends Component {
             this.setState({error})
         }).then( ()=> {this.setState({ loading: false }) })
     }
+    getUsers = () =>{
+        axios.get('/api/users').then(res=>{
+            console.log('users~~~',res.data)
+            this.setState({
+                users: res.data
+            })
+        })
+    }
     logout = () =>{
         axios.post('/api/logout').then( res=>{
             console.log('Youve been logged out');
@@ -39,7 +49,6 @@ class Home extends Component {
     }
     recentItems = () =>{
         axios.get('/api/items').then(items=>{
-            console.log(items.data)
             this.setState({
                 recent: items.data
             })
@@ -61,6 +70,7 @@ class Home extends Component {
             </div>
         })
 
+        
         return(
             <div className='home'>
 
@@ -68,7 +78,7 @@ class Home extends Component {
                     <Link to='/' className='linktitle'><h1 className='title'>pompom</h1></Link>
                     {user
                                 ?   <div className='loggedin'>
-                                    <div>Welcome, {user.username}</div>
+                                    <div>Welcome, <Link to='/dashboard' className='userlink'>{user.username}</Link></div>
                                     <div className='logoutlink' onClick={this.logout}>logout</div></div>
                             
                                 : <div><a href={url} className='login'>login</a></div>
@@ -81,7 +91,7 @@ class Home extends Component {
                             Share your collection <br />
                             Sell your items <br />
                             Discover rare collectables <br />
-                            <a href={url} className='join'>Join now</a>
+                            <a href={url} className='join'>Get started</a>
                     </p>
                     
                     <img src='https://nksoldes2015.com/images/manager-clipart-marketing-department-3.png' className='firstpic' />
@@ -89,11 +99,18 @@ class Home extends Component {
                 </div>
                 <div className='middlebanner'>
                     <img src='https://vignette.wikia.nocookie.net/hellokitty/images/2/21/Sanrio_Characters_Corocorokuririn--Chibikuri--Cherri--Chacha_Image001.png/revision/latest?cb=20170408005620' className='second' />
+                
+                    {/* <div className='spotlight'>
+                        <h3>User Spotlight</h3>
+                        <div>name</div>
+                        <p>collectables: 5</p>
+                        <p>for sale: 2</p>
+                    </div> */}
                 </div>
             
 
                 <div className='thirdbanner'>
-                    <h2 className='recentstitle'>recently uploaded items</h2>
+                    <h2 className='recentstitle'>recently uploaded items...</h2>
                     <div className='recentbox'>{recentlyAdded}</div>
                 </div>
 
@@ -101,7 +118,6 @@ class Home extends Component {
                 <footer className='footy'>
                     <img src='../../../favicon.ico' width={50}/>
                     <div>Madi Walmsley</div>
-                    {/* <img src="https://sanrio-production-weblinc.netdna-ssl.com/media/W1siZiIsIjIwMTcvMTAvMjAvMTkvMjIvMDgvODI2L3NhbnJpb19kb3RfY29tX3NraW5fZGVza3RvcF9ob21lX2hvbGlkYXlfZm9vdGVyLnBuZyJdXQ/sanrio-dot-com-skin-desktop-home-holiday-footer.png?sha=403c7ae5267bf412" className='footy' /> */}
                 </footer>
                     {/* <div className='left'>
                     <div className='bubble'>

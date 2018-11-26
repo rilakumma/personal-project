@@ -5,6 +5,7 @@ import { userLogin, addItem } from '../../ducks/reducer';
 import axios from 'axios';
 import './Nav.css';
 import CloudinaryWidget from '../CloudinaryWidget/CloudinaryWidget';
+import Search from '../Search/Search';
 
 class Nav extends Component {
     constructor(){
@@ -82,6 +83,9 @@ class Nav extends Component {
             this.setState({
                 popup: false
             })
+            this.refs.titlebox.value ='';
+            this.refs.yearbox.value ='';
+            this.refs.descbox.value ='';
         })
         
     }
@@ -112,29 +116,32 @@ class Nav extends Component {
                 <Link to='/profile' className='linky'>profile</Link>
                 <div className='linky' onClick={()=> this.logout()}>logout</div>
                 </div>
-            </div>
-            
-            </div>
-            }
-
                     <div className='addItem'>
                             <div>
-                                <div className='add' onClick={this.togglePopup}><span className='addbtn'>&#43;</span> new item</div>
+                                <div className='add' onClick={this.togglePopup}><span className='plus'>&#43;</span></div>
                             </div>
                             <div className={this.state.popup ? 'popup' : 'closepop'}>
                             {/* <div className={this.state.click ? 'upload' : 'dont'}> */}
                                 <div className='popup-content'>
                                 <span onClick={this.togglePopup} className={this.state.popup ?'close' : 'closepop'}>&times;</span>
                                     <div className='inputform'>
-                                    <input className='inputz' type='text' placeholder='enter item name' onChange={e=> this.updateItemName(e.target.value)}/>
+                                    <input className='inputz' type='text' placeholder='enter item name' onChange={e=> this.updateItemName(e.target.value)} ref='titlebox' />
                                     <CloudinaryWidget /> 
-                                    <input className='inputz' type='integer' placeholder='enter year made' onChange={e=> this.updateItemYear(e.target.value )}/>
-                                    <input className='inputz' type='text' placeholder='enter item description' onChange={e=> this.updateItemDesc(e.target.value)}/>
+                                    <input className='inputz' type='integer' placeholder='enter year made' onChange={e=> this.updateItemYear(e.target.value )} ref='yearbox' />
+                                    <input className='inputz' type='text' placeholder='enter item description' onChange={e=> this.updateItemDesc(e.target.value)} ref='descbox' />
                                     <button className='uploadbtn' onClick={()=> this.addItem()}>upload</button>
                                     </div>
                                     </div>
                             </div>
                     </div>
+            </div>
+            
+            </div>
+            }
+
+            <div>
+                <Search />
+            </div>
         </div>
         
         )
