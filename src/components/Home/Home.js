@@ -70,6 +70,16 @@ class Home extends Component {
             </div>
         })
 
+
+        // const spotlight = this.state.users.filter(user => user.id === 1)
+        // console.log(spotlight)
+        // const showSpotlight = spotlight.map(val=>{
+        //     return  <div className='spotlight'>
+        //     <h3>User Spotlight</h3>
+        //     <div>{val.name}</div>
+        //     <p>collectables: </p>
+        // </div>
+        // })
         
         return(
             <div className='home'>
@@ -91,27 +101,21 @@ class Home extends Component {
                             Share your collection <br />
                             Sell your items <br />
                             Discover rare collectables <br />
-                            <a href={url} className='join'>Get started</a>
+                            <a href={url} className='join'>&hearts; Get started</a>
                     </p>
                     
                     <img src='https://nksoldes2015.com/images/manager-clipart-marketing-department-3.png' className='firstpic' />
                     
                 </div>
                 <div className='middlebanner'>
-                    <img src='https://vignette.wikia.nocookie.net/hellokitty/images/2/21/Sanrio_Characters_Corocorokuririn--Chibikuri--Cherri--Chacha_Image001.png/revision/latest?cb=20170408005620' className='second' />
-                
-                    {/* <div className='spotlight'>
-                        <h3>User Spotlight</h3>
-                        <div>name</div>
-                        <p>collectables: 5</p>
-                        <p>for sale: 2</p>
-                    </div> */}
+                    <img src='https://www.sanrio.com/media/W1siZiIsIjIwMTYvMDYvMDgvMjAvNTEvMDgvMTgyL2Fib3V0X3RvcC5wbmciXV0/about_top.png?sha=36217d70b34d6b91' className='second' />
                 </div>
             
 
                 <div className='thirdbanner'>
                     <h2 className='recentstitle'>recently uploaded items...</h2>
                     <div className='recentbox'>{recentlyAdded}</div>
+                    {/* <span>{recentlyAdded}</span> */}
                 </div>
 
 

@@ -167,7 +167,7 @@ render(){
     
     return(
         
-        <div>
+        <div className='itemholder'>
             
             {this.props.pathname==='/dashboard' &&     
                 <div>

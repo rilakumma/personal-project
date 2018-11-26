@@ -26,7 +26,7 @@
 }
 .about{
     font-family: 'Pattaya', sans-serif;
-    /* font-weight: bold; */
+    font-weight: 0;
     width: fit-content;
     font-size: 30px;
     padding-left: 100px;
@@ -34,6 +34,8 @@
     margin-bottom: 20px;
 }
 .join{
+    font-family: 'Pattaya', sans-serif;
+    font-size: 30px;
     text-decoration: none;
     color: red;
 }
@@ -44,8 +46,9 @@
 }
 .middlebanner{
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin: 50px;
+    margin: 70px;
     width: 100vw;
     height: fit-content;
 }
@@ -54,8 +57,8 @@
 }
 .second {
     padding-left: 40px;
-    width: 30vw;
-    height: 25vh;
+    width: 60vw;
+    height: 30vh;
 }
 .recentstitle{
     justify-content: center;
@@ -155,7 +158,7 @@
 } */
 .title{
     font-family: 'Pattaya', sans-serif;
-    font-weight: bold;
+    font-weight: 200;
     font-size: 40px;
     padding: 0;
     margin-left: 50px;
@@ -218,8 +221,98 @@
     flex-direction: column;
     margin-top: 50px;
 }
-.tweetbox{
-    margin: 0;
-   height: 200px;
-   width: 200px;
+
+
+
+/* .marquee {
+  height: fit-content;
+  width: 1000px;
+
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee .marqtest {
+  display: block;
+  width: 200%;
+  height: 200px;
+
+  position: absolute;
+  overflow: hidden;
+
+  animation: marquee 10s linear infinite;
+}
+
+.marquee span {
+    height: fit-content;
+  float: left; 
+  width: 100vw;
+}
+
+@keyframes marquee {
+  0% { left: 0; }
+  100% { left: -100%; }
+} */
+
+
+@media screen and (max-width:800px){
+    .middlebanner{
+        display: none;
+    }
+    .topbanner{
+        flex-direction: column;
+    }
+    .about{
+        padding:0;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-size: 35px;
+    }
+    .firstpic{
+        width:80vw;
+    }
+}
+
+@media screen and (max-width: 420px){
+    .firstpic{
+        display: none;
+    }
+    .about{
+        font-size: 30px;
+    }
+    .recents{
+        height: 150px;
+        width: 150px;
+    }
+    .recents > img {
+        width: 50px;
+        height: 50px;
+    }
+    .imgtitle{
+        font-size: 10px;
+    }
+    .username{
+        font-size: 12px;
+    }
+    .itemprice{
+        font-size: 12px;
+    }
+    .logoutlink{
+        display: none;
+    }
+    .loggedin{
+        font-size: 12px;
+        padding: 0;
+        width: fit-content;
+        padding-right: 20px;
+    }
+    .title{
+        margin-left: 20px;
+    }
+    .recentstitle{
+        font-size: 20px;
+    }
 }

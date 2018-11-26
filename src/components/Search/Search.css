@@ -13,3 +13,12 @@
     border-bottom: 2px solid grey;
     background: none;
 }
+
+@media screen and (max-width:800px){
+    .searchbar{
+        display: none;
+    }
+    .searchresults{
+        display: none;
+    }
+}

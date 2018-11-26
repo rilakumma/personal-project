@@ -168,6 +168,12 @@
 .deletebtn:hover{
     cursor: pointer;
 }
+
+.itemstitle{
+    margin-bottom: 8px;
+}
+
+
 @media screen and (max-width:800px){
     .itemview{
         max-width: 100vw;
@@ -175,12 +181,23 @@
         flex-wrap: wrap;
         margin: 0;
     }
+    .itemholder{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .collectview{
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: fit-content;
+    }
+   
+}
 
-}
-.itemstitle{
-    margin-bottom: 8px;
-}
-@media screen and (max-width: 375px){
+@media screen and (max-width: 420px){
     .itemview{
         flex-direction: column;
         align-items: center;
