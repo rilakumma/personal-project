@@ -135,7 +135,7 @@ render(){
     })
         
 
-    const showItems = this.props.pathname === '/collection' ? this.props.items.map(item=>{
+    const showItems = this.props.pathname === '/collection' ? this.props.items.reverse().map(item=>{
             return <div className='item'>
                 <div className='imgbox'><img src={item.photo} className='itemimg' width={200}/></div>
                 <h3 className='itemname'>{item.title}</h3>
@@ -148,7 +148,7 @@ render(){
             </div> 
     }) 
     : this.props.pathname === '/dashboard' &&
-    this.props.items.slice((this.props.items.length-4),this.props.items.length).map(item=>{
+    this.props.items.slice((this.props.items.length-4),this.props.items.length).reverse().map(item=>{
         
             return <div className='item'>
                     <div>
